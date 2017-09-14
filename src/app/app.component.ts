@@ -16,12 +16,12 @@ export class AppComponent {
     value = 50;
     bufferValue = 75;
 
-    tiles: Tile[] = [
-        {text: 'Rock', cols: 2, rows: 1, color: 'red'},
-        {text: 'Paper', cols: 2, rows: 1, color: 'grey'},
-        {text: 'Scissors', cols: 2, rows: 1, color: 'royalblue'},
-       // {text: 'Start', cols: 6, rows: 1, color: 'lightblue'}
-    ];
+    // tiles: Tile[] = [
+    //     {text: 'Rock', cols: 2, rows: 1, color: 'red'},
+    //     {text: 'Paper', cols: 2, rows: 1, color: 'grey'},
+    //     {text: 'Scissors', cols: 2, rows: 1, color: 'royalblue'},
+    //    // {text: 'Start', cols: 6, rows: 1, color: 'lightblue'}
+    // ];
 
     constructor(private http: Http) {
 
