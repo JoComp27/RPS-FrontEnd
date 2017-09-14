@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Http} from '@angular/http';
 
 import 'rxjs/add/operator/map';
+import {GameService} from "./game.service";
 
 @Component({
     selector: 'app-root',
@@ -16,6 +17,10 @@ export class AppComponent {
     value = 50;
     bufferValue = 75;
 
+    playerPlay: string;
+    opponentPlay: string;
+    gameState: string;
+
     // tiles: Tile[] = [
     //     {text: 'Rock', cols: 2, rows: 1, color: 'red'},
     //     {text: 'Paper', cols: 2, rows: 1, color: 'grey'},
@@ -23,7 +28,7 @@ export class AppComponent {
     //    // {text: 'Start', cols: 6, rows: 1, color: 'lightblue'}
     // ];
 
-    constructor(private http: Http) {
+    constructor(private http: Http, private gameService: GameService) {
 
 
         this.http.get('https://jsonplaceholder.typicode.com/photos')
@@ -34,6 +39,15 @@ export class AppComponent {
 
     foo(tile: Tile): void {
         console.log(tile.text);
+    }
+
+    getGameResult(play: string) {
+        this.gameService.getResult(play)
+            .then(game => {
+                this.gameState = game.gameState;
+                this.playerPlay = game.playerPlay;
+                this.opponentPlay = game.opponentPlay;
+            });
     }
 
 }

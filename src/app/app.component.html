@@ -17,18 +17,23 @@
 
     <img md-card-image src="{{ data.url }}">
     <md-card-header>
-        <md-card-title>{{ data.title }}</md-card-title>
+        <md-card-title>You played: {{playerPlay}}</md-card-title>
+        <md-card-title>Your opponent played: {{opponentPlay}}</md-card-title>
+        <md-card-title>Result: {{gameState}}</md-card-title>
     </md-card-header>
 
     <md-card-actions>
-        <md-button-toggle-group style="width: 100%;">
-            <md-button-toggle value="Rock">Rock</md-button-toggle>
-            <md-button-toggle value="Paper">Paper</md-button-toggle>
-            <md-button-toggle value="Scissors">Scissors</md-button-toggle>
+        <md-button-toggle-group [(ngModel)]="play" style="width: 100%;">
+            <md-button-toggle value="ROCK">Rock</md-button-toggle>
+            <md-button-toggle value="PAPER">Paper</md-button-toggle>
+            <md-button-toggle value="SCISSORS">Scissors</md-button-toggle>
         </md-button-toggle-group>
+        <button md-button (click)="getGameResult(play)">Submit</button>
     </md-card-actions>
 
+
 </md-card>
+
 
 
 
