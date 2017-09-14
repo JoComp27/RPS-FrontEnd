@@ -16,6 +16,15 @@ export class AppComponent {
     value = 50;
     bufferValue = 75;
 
+
+    games: Game[] = [
+        {playerPlay: "Rock", opponentPlay: "Paper", gameState: "Lose"},
+        {playerPlay: "Rok", opponentPlay: "Paer", gameState: "Lose"},
+        {playerPlay: "Rock", opponentPlay: "aper", gameState: "Lse"},
+        {playerPlay: "Rok", opponentPlay: "Paper", gameState: "ose"}
+    ];
+
+
     // tiles: Tile[] = [
     //     {text: 'Rock', cols: 2, rows: 1, color: 'red'},
     //     {text: 'Paper', cols: 2, rows: 1, color: 'grey'},
@@ -32,15 +41,13 @@ export class AppComponent {
 
     }
 
-    foo(tile: Tile): void {
-        console.log(tile.text);
+    foo() {
+        this.games.push({playerPlay: "Rok", opponentPlay: "Paper", gameState: "ose"});
     }
-
 }
 
-interface Tile {
-    text: string;
-    cols: number;
-    rows: number;
-    color: string;
+export interface Game {
+    playerPlay: string;
+    opponentPlay: string;
+    gameState: string;
 }
