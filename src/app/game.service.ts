@@ -9,7 +9,7 @@ import {Game} from './game';
 
 @Injectable()
 export class GameService {
-    private apiUrl = 'http://localhost:8080/games';
+    private apiUrl = 'http://localhost:1112/games';
     private headers = new Headers({
         'Content-Type': 'application/json'
     });

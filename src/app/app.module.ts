@@ -7,11 +7,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MdGridListModule, MdButtonToggleModule, MdTableModule} from '@angular/material';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {GameService} from "./game.service";
+import { LineGraphComponent } from './line-graph/line-graph.component';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        LineGraphComponent
     ],
     imports: [
         BrowserModule,
@@ -25,7 +28,8 @@ import {GameService} from "./game.service";
         MdIconModule,
         MdGridListModule,
         MdButtonToggleModule,
-        MdTableModule
+        MdTableModule,
+        NgxChartsModule
     ],
     providers: [GameService],
     bootstrap: [AppComponent]

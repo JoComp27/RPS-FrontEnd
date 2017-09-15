@@ -1,9 +1,10 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {Http} from '@angular/http';
 
 import 'rxjs/add/operator/map';
 import {GameService} from "./game.service";
 import {Game} from "./game";
+import  {LineGraphComponent} from "./line-graph/line-graph.component";
 
 @Component({
     selector: 'app-root',
@@ -18,13 +19,15 @@ export class AppComponent {
     // value = 50;
     // bufferValue = 75;
 
-
     games: Game[] = [];
     currentGame: Game;
     count = 0;
     wins = 0;
     losses = 0;
     draws = 0;
+
+
+    @ViewChild(LineGraphComponent) line;
 
     // tiles: Tile[] = [
     //     {text: 'Rock', cols: 2, rows: 1, color: 'red'},
@@ -51,6 +54,7 @@ export class AppComponent {
                 game.id = this.count; // assign game an id on frontend
                 this.updateScore(game.gameState);
                 this.games.push(game);
+                this.line.add(this.wins - this.losses);
             });
     }
 
@@ -60,6 +64,8 @@ export class AppComponent {
         this.wins = 0;
         this.losses = 0;
         this.draws = 0;
+
+        this.line.clear();
     }
 
     setGameType(gameType: string) {
