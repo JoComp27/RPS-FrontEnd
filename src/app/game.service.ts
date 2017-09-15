@@ -1,11 +1,11 @@
 /**
  * Created by erin.benderoff on 14/09/17.
  */
-import {Injectable} from "@angular/core";
-import {Http, Headers} from "@angular/http";
-import { URLSearchParams } from '@angular/http';
+import {Injectable} from '@angular/core';
+import {Http, Headers} from '@angular/http';
+import {URLSearchParams} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import {Game} from "./game";
+import {Game} from './game';
 
 @Injectable()
 export class GameService {
@@ -15,9 +15,8 @@ export class GameService {
     });
     private params = new URLSearchParams();
 
-    constructor(
-        private http: Http
-    ) {}
+    constructor(private http: Http) {
+    }
 
     getResult(play: string): Promise<Game> {
         this.params.set('play', play);
