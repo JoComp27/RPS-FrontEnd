@@ -43,5 +43,24 @@
 
 </md-card>
 
+<table class="table-fill" align="" >
+    <thead>
+    <tr>
+        <th>Player</th>
+        <th>Opponent</th>
+        <th>Result</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let game of games">
+        <tr>
+            <td>{{game.playerPlay}}</td>
+            <td>{{game.opponentPlay}}</td>
+            <td>{{game.gameState}}</td>
+        </tr>
+    </ng-container>
+    </tbody>
+</table>
+
 
 
