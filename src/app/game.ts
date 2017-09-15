@@ -1,8 +1,7 @@
 /**
- * Created by jonathan.cournoyer on 15/09/17.
+ * Created by erin.benderoff on 14/09/17.
  */
-export class Game{
-    id: number;
+export class Game {
     playerPlay: string;
     opponentPlay: string;
     gameState: string;
