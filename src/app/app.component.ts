@@ -52,4 +52,8 @@ export class AppComponent {
             });
     }
 
+    reset() {
+        this.games = [];
+    }
+
 }

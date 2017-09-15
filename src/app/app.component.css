@@ -40,7 +40,7 @@ md-button-toggle {
     line-height: 1;
 }
 
-span.game {
+.game-card span {
     width: 50%;
     display: inline-block;
     text-align: center;
