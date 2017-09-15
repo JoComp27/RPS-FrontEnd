@@ -33,8 +33,8 @@ export class GameService {
 
     // Jonathan's code
     // private gameUrl = 'http://localhost:8080/(ENTER LINK HERE)';
-    // getGame(game: Game): Promise<Game> {
-    //     const url = `${this.gameUrl}/${game.playerPlay}`
+    // getGame(currentGame: Game): Promise<Game> {
+    //     const url = `${this.gameUrl}/${currentGame.playerPlay}`
     //     return this.http.get(url)
     //         .toPromise()
     //         .then(response => response.json()  as Game)

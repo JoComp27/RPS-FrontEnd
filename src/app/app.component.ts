@@ -20,11 +20,8 @@ export class AppComponent {
 
 
     games: Game[] = [];
-
-
-    playerPlay: string;
-    opponentPlay: string;
-    gameState: string;
+    currentGame: Game;
+    count = 0;
 
     // tiles: Tile[] = [
     //     {text: 'Rock', cols: 2, rows: 1, color: 'red'},
@@ -34,26 +31,33 @@ export class AppComponent {
     // ];
 
     constructor(private http: Http, private gameService: GameService) {
-
-
+        this.currentGame = new Game();
+        this.currentGame.gameType = 'RANDOM'; // currentGame type defaults to random
         this.http.get('https://jsonplaceholder.typicode.com/photos')
             .map(response => response.json())
             .subscribe(res => this.myData = res);
-
     }
 
+    // to do: pass in the game type when jonathan finishes back end
     getGameResult(play: string) {
         this.gameService.getResult(play)
             .then(game => {
-                this.gameState = game.gameState;
-                this.playerPlay = game.playerPlay;
-                this.opponentPlay = game.opponentPlay;
+                this.currentGame.gameState = game.gameState;
+                this.currentGame.playerPlay = game.playerPlay;
+                this.currentGame.opponentPlay = game.opponentPlay;
+                this.count = this.count + 1;
+                game.id = this.count; // assign game an id on frontend
                 this.games.push(game);
             });
     }
 
     reset() {
         this.games = [];
+        this.count = 0;
+    }
+
+    setGameType(gameType: string) {
+        this.currentGame.gameType = gameType;
     }
 
 }
