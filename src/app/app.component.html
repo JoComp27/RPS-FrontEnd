@@ -15,20 +15,30 @@
 
 <md-card class="example-card" *ngFor="let data of (myData ? myData.slice(0,1): []); let i = index">
 
-    <img md-card-image src="{{ data.url }}">
-    <md-card-header>
-        <md-card-title>You played: {{playerPlay}}</md-card-title>
-        <md-card-title>Your opponent played: {{opponentPlay}}</md-card-title>
-        <md-card-title>Result: {{gameState}}</md-card-title>
-    </md-card-header>
-
+    <!--<img md-card-image src="{{ data.url }}">-->
+    <img md-card-image src="assets/title-image.png">
+    <md-card-content *ngIf="gamePlayed">
+        <span class="game">Your Move</span><span class="game">Opponent's Move</span>
+        <span class="game">
+            <img src="assets/Paper_human.png" *ngIf="playerPlay=='PAPER'">
+            <img src="assets/Rock_human.png" *ngIf="playerPlay=='ROCK'">
+            <img src="assets/Scissors_human.png" *ngIf="playerPlay=='SCISSORS'">
+        </span><span class="game">
+            <img src="assets/Paper_computer.png" *ngIf="opponentPlay=='PAPER'">
+            <img src="assets/Rock_computer.png" *ngIf="opponentPlay=='ROCK'">
+            <img src="assets/Scissors_computer.png" *ngIf="opponentPlay=='SCISSORS'">
+        </span>
+    </md-card-content>
+    <md-card-title *ngIf="gamePlayed">
+        {{gameState}}
+    </md-card-title>
     <md-card-actions>
         <md-button-toggle-group [(ngModel)]="play" style="width: 100%;">
             <md-button-toggle value="ROCK">Rock</md-button-toggle>
             <md-button-toggle value="PAPER">Paper</md-button-toggle>
             <md-button-toggle value="SCISSORS">Scissors</md-button-toggle>
         </md-button-toggle-group>
-        <button md-button value="Enter" style="width: 100%; height: 100px" (click)="getGameResult(play)">Enter</button>
+        <button md-button value="Enter" style="width: 100%; height: 100px" (click)="getGameResult(play); [gamePlayed=true]">Enter</button>
     </md-card-actions>
 
 </md-card>
