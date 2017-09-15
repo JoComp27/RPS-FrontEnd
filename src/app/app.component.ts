@@ -41,9 +41,8 @@ export class AppComponent {
             .subscribe(res => this.myData = res);
     }
 
-    // to do: pass in the game type when jonathan finishes back end
-    getGameResult(play: string) {
-        this.gameService.getResult(play)
+    getGameResult(play: string, type: string) {
+        this.gameService.getResult(play, type)
             .then(game => {
                 this.currentGame.gameState = game.gameState;
                 this.currentGame.playerPlay = game.playerPlay;

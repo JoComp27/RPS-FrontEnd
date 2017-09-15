@@ -18,8 +18,9 @@ export class GameService {
     constructor(private http: Http) {
     }
 
-    getResult(play: string): Promise<Game> {
+    getResult(play: string, type: string): Promise<Game> {
         this.params.set('play', play);
+        this.params.set('type', type);
         return this.http
             .get(this.apiUrl, {headers: this.headers, params: this.params})
             .toPromise()
