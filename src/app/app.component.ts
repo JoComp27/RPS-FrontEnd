@@ -22,6 +22,9 @@ export class AppComponent {
     games: Game[] = [];
     currentGame: Game;
     count = 0;
+    wins = 0;
+    losses = 0;
+    draws = 0;
 
     // tiles: Tile[] = [
     //     {text: 'Rock', cols: 2, rows: 1, color: 'red'},
@@ -47,6 +50,7 @@ export class AppComponent {
                 this.currentGame.opponentPlay = game.opponentPlay;
                 this.count = this.count + 1;
                 game.id = this.count; // assign game an id on frontend
+                this.updateScore(game.gameState);
                 this.games.push(game);
             });
     }
@@ -54,10 +58,27 @@ export class AppComponent {
     reset() {
         this.games = [];
         this.count = 0;
+        this.wins = 0;
+        this.losses = 0;
+        this.draws = 0;
     }
 
     setGameType(gameType: string) {
         this.currentGame.gameType = gameType;
+    }
+
+    updateScore(gameState: string) {
+        switch (gameState) {
+            case 'WIN':
+                this.wins = this.wins + 1;
+                break;
+            case 'LOSS':
+                this.losses = this.losses + 1;
+                break;
+            case 'DRAW':
+                this.draws = this.draws + 1;
+                break;
+        }
     }
 
 }
