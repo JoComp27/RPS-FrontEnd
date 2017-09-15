@@ -3,6 +3,7 @@ import {Http} from '@angular/http';
 
 import 'rxjs/add/operator/map';
 import {GameService} from "./game.service";
+import {Game} from "./game";
 
 @Component({
     selector: 'app-root',
@@ -12,18 +13,13 @@ import {GameService} from "./game.service";
 
 export class AppComponent {
     myData: Array<any>;
-    color = 'primary';
-    mode = 'determinate';
-    value = 50;
-    bufferValue = 75;
+    // color = 'primary';
+    // mode = 'determinate';
+    // value = 50;
+    // bufferValue = 75;
 
 
-    games: Game[] = [
-        {playerPlay: "Rock", opponentPlay: "Paper", gameState: "Lose"},
-        {playerPlay: "Rok", opponentPlay: "Paer", gameState: "Lose"},
-        {playerPlay: "Rock", opponentPlay: "aper", gameState: "Lse"},
-        {playerPlay: "Rok", opponentPlay: "Paper", gameState: "ose"}
-    ];
+    games: Game[] = [];
 
 
     playerPlay: string;
@@ -46,24 +42,14 @@ export class AppComponent {
 
     }
 
-    foo(tile: Tile): void {
-        console.log(tile.text);
-    }
-
     getGameResult(play: string) {
         this.gameService.getResult(play)
             .then(game => {
                 this.gameState = game.gameState;
                 this.playerPlay = game.playerPlay;
                 this.opponentPlay = game.opponentPlay;
+                this.games.push(game);
             });
     }
 
-}
-
-interface Tile {
-    text: string;
-    cols: number;
-    rows: number;
-    color: string;
 }
