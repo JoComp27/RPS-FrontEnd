@@ -7,6 +7,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MdButtonToggleModule} from '@angular/material';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
+import {GameService} from './game.service';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,7 @@ import {HttpModule} from '@angular/http';
         MdIconModule,
         MdButtonToggleModule
     ],
-    providers: [],
+    providers: [GameService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
